@@ -1,18 +1,12 @@
-const notifications = [
-  'Voted',
-  'Added a new anecdote '
-]
 
 const initialState = ''
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
     case 'LIKE':
-      const votedNotification = notifications[0]
-      return votedNotification
+      return 'Voted'
     case 'NEW_ANECDOTE':
-      const newAnecdoteNotification = notifications[1]
-      return newAnecdoteNotification
+      return 'Added a new anecdote'
     case 'HIDE':
       return ''
     default:
