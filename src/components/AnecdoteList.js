@@ -1,6 +1,7 @@
 import React from 'react'
 import { like } from '../reducers/anecdoteReducer'
 import { useSelector, useDispatch } from 'react-redux'
+import { hideNotification } from '../reducers/notificationReducer'
 
 const AnecdoteList = () => {
   const anecdotes = useSelector(state => state.anecdotes)
@@ -9,6 +10,9 @@ const AnecdoteList = () => {
   const vote = (id) => {
     console.log('vote', id)
     dispatch(like(id))
+    setTimeout(() => {
+      dispatch(hideNotification())
+    }, 5000)
   }
 
   const sortedAnecdotes = [].concat(anecdotes)

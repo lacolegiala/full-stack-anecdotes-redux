@@ -13,8 +13,16 @@ const reducer = (state = initialState, action) => {
     case 'NEW_ANECDOTE':
       const newAnecdoteNotification = notifications[1]
       return newAnecdoteNotification
+    case 'HIDE':
+      return ''
     default:
       return state
+  }
+}
+
+export const hideNotification = () => {
+  return {
+    type: 'HIDE'
   }
 }
 
