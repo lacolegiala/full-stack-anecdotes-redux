@@ -3,10 +3,8 @@ const initialState = ''
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case 'LIKE':
-      return 'Voted'
-    case 'NEW_ANECDOTE':
-      return 'Added a new anecdote'
+    case 'SET_NOTIFICATION':
+      return action.data.text
     case 'HIDE':
       return ''
     default:
@@ -17,6 +15,20 @@ const reducer = (state = initialState, action) => {
 export const hideNotification = () => {
   return {
     type: 'HIDE'
+  }
+}
+
+export const setNotification = (text, timer) => {
+  return async dispatch => {
+    dispatch({
+      type: 'SET_NOTIFICATION',
+      data: {
+        text: text
+      }
+    })
+    setTimeout(() => {
+      dispatch(hideNotification())
+    }, timer * 1000)
   }
 }
 
