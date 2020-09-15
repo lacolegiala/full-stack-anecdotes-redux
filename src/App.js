@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import AnecdoteForm from './components/AnecdoteForm'
-import AnecdoteList from './components/AnecdoteList'
-import Notification from './components/Notification'
+import ConnectedAnecdoteList from './components/AnecdoteList'
+import ConnectedNotification from './components/Notification'
 import { useSelector } from 'react-redux'
 import { initializeAnecdotes } from './reducers/anecdoteReducer'
 import { useDispatch } from 'react-redux'
@@ -16,8 +16,8 @@ const App = () => {
 
   return (
     <div>
-      {notification !== '' && <Notification></Notification>}
-      <AnecdoteList></AnecdoteList>
+      {notification !== '' && <ConnectedNotification></ConnectedNotification>}
+      <ConnectedAnecdoteList></ConnectedAnecdoteList>
       <AnecdoteForm></AnecdoteForm>
     </div>
   )
