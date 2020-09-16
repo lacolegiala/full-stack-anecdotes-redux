@@ -2,17 +2,23 @@ import React, { useEffect } from 'react'
 import AnecdoteForm from './components/AnecdoteForm'
 import ConnectedAnecdoteList from './components/AnecdoteList'
 import ConnectedNotification from './components/Notification'
-import { useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 import { initializeAnecdotes } from './reducers/anecdoteReducer'
 import { useDispatch } from 'react-redux'
 
-const App = () => {
+const mapStateToProps = (state) => {
+  return {
+    notification: state.notifications
+  } 
+}
+
+const App = (props) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(initializeAnecdotes())
   }, [dispatch])
   
-  const notification = useSelector(state => state.notifications.text)
+  const notification = props.notification.text
 
   return (
     <div>
@@ -23,4 +29,6 @@ const App = () => {
   )
 }
 
-export default App
+const ConnectedApp = connect(mapStateToProps)(App)
+
+export default ConnectedApp
