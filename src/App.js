@@ -12,11 +12,11 @@ const App = () => {
     dispatch(initializeAnecdotes())
   }, [dispatch])
   
-  const notification = useSelector(state => state.notifications)
+  const notification = useSelector(state => state.notifications.text)
 
   return (
     <div>
-      {notification !== '' && <ConnectedNotification></ConnectedNotification>}
+      {notification !== undefined && <ConnectedNotification></ConnectedNotification>}
       <ConnectedAnecdoteList></ConnectedAnecdoteList>
       <AnecdoteForm></AnecdoteForm>
     </div>

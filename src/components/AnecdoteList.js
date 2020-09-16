@@ -9,7 +9,7 @@ const AnecdoteList = (props) => {
   const vote = (id, anecdote) => {
     console.log('vote', id)
     dispatch(voteAction(id, anecdote))
-    dispatch(setNotification(`you voted for '${anecdote.content}'`, 10))
+    dispatch(setNotification(`you voted for '${anecdote.content}'`, 5))
   }
 
   const sortedAnecdotes = [].concat(props.anecdotes)
